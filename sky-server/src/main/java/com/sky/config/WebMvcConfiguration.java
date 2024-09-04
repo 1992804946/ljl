@@ -86,7 +86,5 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
         //将自己的消息转化器加入容器
         converters.add(0,converter);//设置为0提高消息转化器的优先级
 
-
-
     }
 }
