@@ -17,4 +17,10 @@ public interface CategoryService {
      * @return
      */
     PageResult pageQuery(CategoryPageQueryDTO categoryPageQueryDTO);
+
+    /**
+     * 修改菜品分类
+     * @param categoryDTO
+     */
+    void updateCategory(CategoryDTO categoryDTO);
 }

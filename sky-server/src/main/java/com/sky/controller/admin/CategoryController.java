@@ -45,5 +45,17 @@ public class CategoryController {
         return Result.success(pageResult);
     }
 
+    /**
+     * 修改菜品分类
+     * @param categoryDTO
+     * @return
+     */
+    @PutMapping
+    @ApiOperation("修改菜品分类")
+    public Result updateCategory(@RequestBody CategoryDTO categoryDTO) {
+        categoryService.updateCategory(categoryDTO);
+        return Result.success();
+    }
+
 
 }
