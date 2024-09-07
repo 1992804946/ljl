@@ -49,7 +49,10 @@ public class CategoryServiceImpl implements CategoryService {
         return new PageResult(page.getTotal(), page.getResult());
     }
 
-    @Override
+    /**
+     * 修改菜品分类
+     * @param categoryDTO
+     */
     public void updateCategory(CategoryDTO categoryDTO) {
         Category category = new Category();
         BeanUtils.copyProperties(categoryDTO,category);
@@ -57,5 +60,18 @@ public class CategoryServiceImpl implements CategoryService {
         category.setUpdateUser(BaseContext.getCurrentId());
         categoryMapper.update(category);
 
+    }
+
+
+    /**
+     * 启用禁用菜品分类
+     * @param status
+     * @param id
+     */
+    public void startOrStop(Integer status, Long id) {
+        Category category =  Category.builder()
+                .id(id).status(status).updateTime(LocalDateTime.now())
+                .updateUser(BaseContext.getCurrentId()).build();
+        categoryMapper.update(category);
     }
 }

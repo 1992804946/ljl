@@ -53,7 +53,21 @@ public class CategoryController {
     @PutMapping
     @ApiOperation("修改菜品分类")
     public Result updateCategory(@RequestBody CategoryDTO categoryDTO) {
+        log.info("修改菜品分类{}", categoryDTO);
         categoryService.updateCategory(categoryDTO);
+        return Result.success();
+    }
+
+    /**
+     * 启用禁用菜品分类
+     * @param status
+     * @param id
+     * @return
+     */
+    @PostMapping("/status/{status}")
+    @ApiOperation("启用禁用菜品分类")
+    public Result startOrStop(@PathVariable("status") Integer status,Long id) {
+        categoryService.startOrStop(status,id);
         return Result.success();
     }
 
